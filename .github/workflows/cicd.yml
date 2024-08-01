@@ -72,6 +72,4 @@ jobs:
 
           script: | 
 
-            mkdir test
-            cd  test
-            touch index.html 
+            docker ps
