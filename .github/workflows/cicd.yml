@@ -19,7 +19,7 @@ jobs:
         run: docker build -t basic-nodejs-s1-image:latest .
 
       - name: tag docker image
-        run: docker tag basic-nodejs-s1-image:latest assidiwassimdev/basic-nodejs-s1-image:latest
+        run: docker tag basic-nodejs-s1-image:latest ${{ secrets.DOCKERHUB_USERNAME }}/basic-nodejs-s1-image:latest
 
       - name: list of images
         run: docker images
@@ -70,4 +70,5 @@ jobs:
 
           script: | 
 
-            sudo docker ps
+            sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/basic-nodejs-s1-image:latest
+            sudo docker images
