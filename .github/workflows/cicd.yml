@@ -52,8 +52,6 @@ jobs:
     - name: run test on docker container
       run: docker run assidiwassimdev/basic-nodejs-s1-image:latest npm test``
 
-
-
   deploy: 
 
     runs-on: ubuntu-latest 
@@ -72,5 +70,4 @@ jobs:
 
           script: | 
 
-            sudo su
-            docker ps
+            sudo docker ps
