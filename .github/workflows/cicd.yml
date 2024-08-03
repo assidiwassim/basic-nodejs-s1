@@ -16,10 +16,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: build docker image
-        run: docker build -t basic-nodejs-s1-image:latest .
+        run: docker build -t basic-nodejs-s1-image-extra:latest .
 
       - name: tag docker image
-        run: docker tag basic-nodejs-s1-image:latest ${{ secrets.DOCKERHUB_USERNAME }}/basic-nodejs-s1-image:latest
+        run: docker tag basic-nodejs-s1-image-extra:latest ${{ secrets.DOCKERHUB_USERNAME }}/basic-nodejs-s1-image-extra:latest
 
       - name: list of images
         run: docker images
@@ -31,7 +31,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: push docker image to docker hub
-        run: docker push assidiwassimdev/basic-nodejs-s1-image:latest
+        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/basic-nodejs-s1-image-extra:latest
 
   test:
 
@@ -47,10 +47,10 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: pull docker image from docker hub
-      run: docker pull assidiwassimdev/basic-nodejs-s1-image:latest
+      run: docker pull ${{ secrets.DOCKERHUB_USERNAME }}/basic-nodejs-s1-image-extra:latest
 
     - name: run test on docker container
-      run: docker run assidiwassimdev/basic-nodejs-s1-image:latest npm test``
+      run: docker run ${{ secrets.DOCKERHUB_USERNAME }}/basic-nodejs-s1-image-extra:latest npm test``
 
   deploy: 
 
@@ -72,6 +72,6 @@ jobs:
             
             sudo docker stop basic-nodejs-s1-container 
             sudo docker rm basic-nodejs-s1-container 
-            sudo docker rmi ${{ secrets.DOCKERHUB_USERNAME }}/basic-nodejs-s1-image:latest
-            sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/basic-nodejs-s1-image:latest
-            sudo docker run -d -p 3001:3000 --name basic-nodejs-s1-container ${{ secrets.DOCKERHUB_USERNAME }}/basic-nodejs-s1-image:latest
+            sudo docker rmi ${{ secrets.DOCKERHUB_USERNAME }}/basic-nodejs-s1-image-extra:latest
+            sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/basic-nodejs-s1-image-extra:latest
+            sudo docker run -d -p 3001:3000 --name basic-nodejs-s1-container ${{ secrets.DOCKERHUB_USERNAME }}/basic-nodejs-s1-image-extra:latest
