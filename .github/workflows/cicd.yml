@@ -69,9 +69,19 @@ jobs:
           password:  ${{ secrets.VPS_PASSWORD }}
 
           script: | 
-            
-            sudo docker stop basic-nodejs-s1-container 
-            sudo docker rm basic-nodejs-s1-container 
-            sudo docker rmi ${{ secrets.DOCKERHUB_USERNAME }}/basic-nodejs-s1-image-extra:latest
-            sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/basic-nodejs-s1-image-extra:latest
-            sudo docker run -d -p 3001:3000 --name basic-nodejs-s1-container ${{ secrets.DOCKERHUB_USERNAME }}/basic-nodejs-s1-image-extra:latest
+ 
+                sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/basic-nodejs-s1-image-extra:latest
+
+                sudo docker stop basic-nodejs-s1-container 
+
+    
+                sudo docker rm basic-nodejs-s1-container 
+
+ 
+                sudo docker rmi ${{ secrets.DOCKERHUB_USERNAME }}/basic-nodejs-s1-image-extra:latest
+
+
+                sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/basic-nodejs-s1-image-extra:latest
+
+
+                sudo docker run -d -p 3001:3000 --name basic-nodejs-s1-container ${{ secrets.DOCKERHUB_USERNAME }}/basic-nodejs-s1-image-extra:latest
