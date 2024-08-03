@@ -71,8 +71,7 @@ jobs:
           username: ${{ secrets.VPS_USERNAME }}
           password: ${{ secrets.VPS_PASSWORD }}
           script: |
+            sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/basic-nodejs-s1-image-extra:${{ env.BUILD_NUMBER }}
             sudo docker stop basic-nodejs-s1-container || true
             sudo docker rm basic-nodejs-s1-container || true
-            sudo docker rmi ${{ secrets.DOCKERHUB_USERNAME }}/basic-nodejs-s1-image-extra:${{ env.BUILD_NUMBER }} || true
-            sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/basic-nodejs-s1-image-extra:${{ env.BUILD_NUMBER }}
             sudo docker run --pull always -d -p 3001:3000 --name basic-nodejs-s1-container ${{ secrets.DOCKERHUB_USERNAME }}/basic-nodejs-s1-image-extra:${{ env.BUILD_NUMBER }}

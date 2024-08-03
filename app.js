@@ -7,7 +7,7 @@ app.use(express.urlencoded({ extended: true }));
 const calculate = require('./calculate')
 
 app.get("/", (req, res) => {
-  res.send("Hello Devops - session 1 - 59 ");
+  res.send("Hello Devops - session 1 - 60 ");
 });
 
 app.post("/sum", (req, res) => {
