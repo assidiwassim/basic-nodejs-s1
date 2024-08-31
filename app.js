@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 mongoose
-  .connect("MONGODB_URI=mongodb+srv://talelbenbelgacem12:Hf1lJa3VkmgPuryR@instagram.wbdfczq.mongodb.net/mydb", { useNewUrlParser: true })
+  .connect("mongodb://db-user-s1:db-pass-s1@51.77.210.239:27017/db-s1", { useNewUrlParser: true })
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log("Error = ",err));
 
