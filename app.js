@@ -18,7 +18,7 @@ mongoose
 const calculate = require('./calculate')
 
 app.get("/", (req, res) => {
-  res.send("Hello Devops - session 1 - 60 ");
+  res.send("Hello Devops - session 1 - new ");
 });
 
 app.post("/sum", (req, res) => {
